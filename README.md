@@ -33,15 +33,17 @@
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| title          | string     | null: false                    |
-| description    | text       | null: false                    |
-| category_id    | integer    | null: false                    |
-| user           | references | null: false, foreign_key: true |
-| price          | integer    | null: false                    |
-| condition_id   | integer    | null: false                    |
-| sipping_fee_id | integer    | null: false                    |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| title           | string     | null: false                    |
+| description     | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
+| price           | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| sipping_fee_id  | integer    | null: false                    |
+| sipping_area_id | integer    | null: false                    |
+| sipping_days_id | integer    | null: false                    |
 
 ### Association
 
@@ -54,11 +56,10 @@
 | Column          | Type       | Options                         |
 | --------------- | ---------- | ------------------------------- |
 | prefecture_id   | integer    | null: false                     |
-| sipping_days_id | text       | null: false                     |
 | postnumber      | string     | null: false                     |
 | municipality    | string     | null: false                     |
 | address         | string     | null: false                     |
-| building        | string     | null: false                     |
+| building        | string     |                                 |
 | phone_number    | string     | null: false                     |
 | purchase        | references  | null: false, foreign_key: true |
 
