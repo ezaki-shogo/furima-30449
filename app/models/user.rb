@@ -4,13 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
+  with_options presence: true do
+    validates :full_first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    validates :full_last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+    validates :half_first_name, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :half_last_name, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :nickname
+    validates :birthday
+  end
   validates :password, confirmation: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-  validates :birthday, presence: true
-  validates :full_first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :full_last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :half_first_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/  }
-  validates :half_last_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/  }
-
 end
