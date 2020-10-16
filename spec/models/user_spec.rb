@@ -100,6 +100,18 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include('Half last name is invalid')
       end
+      it 'passwordは半角英字のみでは登録できない' do
+        @user.password = 'aaaaaa'
+        @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include( "Password is invalid")
+      end
+      it 'passwordは半角数字のみでは登録できない' do
+        @user.password = '111111'
+        @user.password_confirmation = '111111'
+        @user.valid?
+        expect(@user.errors.full_messages).to include( "Password is invalid")
+      end
     end
   end
 end
